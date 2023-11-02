@@ -1,0 +1,23 @@
+[
+	{
+	  "ParameterKey": "VPCId",
+	  "ParameterValue": "YourVPCId"
+	},
+	{
+	  "ParameterKey": "PublicSubnet1Id",
+	  "ParameterValue": "YourPublicSubnet1Id"
+	},
+	{
+	  "ParameterKey": "PublicSubnet2Id",
+	  "ParameterValue": "YourPublicSubnet2Id"
+	},
+	{
+	  "ParameterKey": "PrivateSubnet1Id",
+	  "ParameterValue": "YourPrivateSubnet1Id"
+	},
+	{
+	  "ParameterKey": "PrivateSubnet2Id",
+	  "ParameterValue": "YourPrivateSubnet2Id"
+	}
+  ]
+  
