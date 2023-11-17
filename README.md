@@ -1,4 +1,4 @@
-# ND9991 - Course 2 - Infrastructure as Code
+Infrastructure as Code
 
 This repository contains the starter code for the final project of course 2 Infrastructure as Code in the Cloud DevOps Engineer Nanodegree.
 
