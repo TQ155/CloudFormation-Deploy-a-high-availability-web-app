@@ -1,0 +1,537 @@
+# sudo dnf install mariadb105
+# mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+# mysql -h udacityrdsrr.c12kq9zi3jrx.us-west-2.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+
+# SHOW DATABASES;
+# USE mysql;
+
+# CREATE TABLE footballer (
+#     id INT AUTO_INCREMENT PRIMARY KEY,
+#     name VARCHAR(50),
+#     age INT,
+#     club VARCHAR(50),
+#     position VARCHAR(50)
+# );
+
+INSERT INTO footballer (name, age, club, position) VALUES
+('Messi', 34, 'Paris Saint-Germain', 'Forward'),
+('Ronaldo', 37, 'Manchester United', 'Forward'),
+('Haaland', 21, 'Borussia Dortmund', 'Forward'),
+('Van Dijk', 30, 'Liverpool', 'Defender'),
+('Laporte', 27, 'Manchester City', 'Defender'),
+('Koulibaly', 30, 'Napoli', 'Defender'),
+('Neuer', 35, 'Bayern Munich', 'Goalkeeper'),
+('Oblak', 29, 'Atletico Madrid', 'Goalkeeper'),
+('Donnarumma', 22, 'Paris Saint-Germain', 'Goalkeeper');
+
+
+INSERT INTO footballer (name, age, club, position) VALUES 
+('Neymar', 29, 'Paris Saint-Germain', 'Forward');
+
+
+please check here : 
+
+screenshots/mysqlDBCreatetableInsertRecords.png
+
+
+######################################3 HERE ARE THE LOGS #####################################
+
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+-bash: mysql: command not found
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t^C
+[ec2-user@ip-10-1-10-121 ~]$ sudo apt-get update
+sudo apt-get install mysql-client
+sudo: apt-get: command not found
+sudo: apt-get: command not found
+[ec2-user@ip-10-1-10-121 ~]$ ^C
+[ec2-user@ip-10-1-10-121 ~]$ sudo yum update
+sudo yum install mysql
+Last metadata expiration check: 0:07:41 ago on Fri Nov 17 14:05:25 2023.
+Dependencies resolved.
+Nothing to do.
+Complete!
+Last metadata expiration check: 0:07:41 ago on Fri Nov 17 14:05:25 2023.
+No match for argument: mysql
+Error: Unable to find a match: mysql
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+-bash: mysql: command not found
+[ec2-user@ip-10-1-10-121 ~]$ ^C
+[ec2-user@ip-10-1-10-121 ~]$ sudo yum update
+Last metadata expiration check: 0:08:36 ago on Fri Nov 17 14:05:25 2023.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[ec2-user@ip-10-1-10-121 ~]$ sudo yum install mysql
+Last metadata expiration check: 0:08:48 ago on Fri Nov 17 14:05:25 2023.
+No match for argument: mysql
+Error: Unable to find a match: mysql
+[ec2-user@ip-10-1-10-121 ~]$ ^C
+[ec2-user@ip-10-1-10-121 ~]$ sudo yum install mysql57
+Last metadata expiration check: 0:09:26 ago on Fri Nov 17 14:05:25 2023.
+No match for argument: mysql57
+Error: Unable to find a match: mysql57
+[ec2-user@ip-10-1-10-121 ~]$ sudo yum install mysql-client~
+Last metadata expiration check: 0:09:45 ago on Fri Nov 17 14:05:25 2023.
+No match for argument: mysql-client~
+Error: Unable to find a match: mysql-client~
+[ec2-user@ip-10-1-10-121 ~]$ sudo yum install mysql-client
+Last metadata expiration check: 0:09:49 ago on Fri Nov 17 14:05:25 2023.
+No match for argument: mysql-client
+Error: Unable to find a match: mysql-client
+[ec2-user@ip-10-1-10-121 ~]$ sudo dnf install mariadb105
+Last metadata expiration check: 0:12:21 ago on Fri Nov 17 14:05:25 2023.
+Dependencies resolved.
+================================================================================
+ Package                    Arch   Version                    Repository   Size
+================================================================================
+Installing:
+ mariadb105                 x86_64 3:10.5.20-1.amzn2023.0.1   amazonlinux 1.6 M
+Installing dependencies:
+ mariadb-connector-c        x86_64 3.1.13-1.amzn2023.0.3      amazonlinux 196 k
+ mariadb-connector-c-config noarch 3.1.13-1.amzn2023.0.3      amazonlinux 9.2 k
+ mariadb105-common          x86_64 3:10.5.20-1.amzn2023.0.1   amazonlinux  31 k
+ perl-Sys-Hostname          x86_64 1.23-477.amzn2023.0.5      amazonlinux  18 k
+
+Transaction Summary
+================================================================================
+Install  5 Packages
+
+Total download size: 1.8 M
+Installed size: 19 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/5): mariadb105-common-10.5.20-1.amzn2023.0.1 416 kB/s |  31 kB     00:00    
+(2/5): perl-Sys-Hostname-1.23-477.amzn2023.0.5. 231 kB/s |  18 kB     00:00    
+(3/5): mariadb-connector-c-config-3.1.13-1.amzn 597 kB/s | 9.2 kB     00:00    
+(4/5): mariadb-connector-c-3.1.13-1.amzn2023.0. 1.8 MB/s | 196 kB     00:00    
+(5/5): mariadb105-10.5.20-1.amzn2023.0.1.x86_64  25 MB/s | 1.6 MB     00:00    
+--------------------------------------------------------------------------------
+Total                                           9.0 MB/s | 1.8 MB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Installing       : mariadb-connector-c-config-3.1.13-1.amzn2023.0.3.noa   1/5 
+  Installing       : mariadb105-common-3:10.5.20-1.amzn2023.0.1.x86_64      2/5 
+  Installing       : mariadb-connector-c-3.1.13-1.amzn2023.0.3.x86_64       3/5 
+  Installing       : perl-Sys-Hostname-1.23-477.amzn2023.0.5.x86_64         4/5 
+  Installing       : mariadb105-3:10.5.20-1.amzn2023.0.1.x86_64             5/5 
+  Running scriptlet: mariadb105-3:10.5.20-1.amzn2023.0.1.x86_64             5/5 
+  Verifying        : mariadb105-common-3:10.5.20-1.amzn2023.0.1.x86_64      1/5 
+  Verifying        : mariadb-connector-c-3.1.13-1.amzn2023.0.3.x86_64       2/5 
+  Verifying        : perl-Sys-Hostname-1.23-477.amzn2023.0.5.x86_64         3/5 
+  Verifying        : mariadb105-3:10.5.20-1.amzn2023.0.1.x86_64             4/5 
+  Verifying        : mariadb-connector-c-config-3.1.13-1.amzn2023.0.3.noa   5/5 
+
+Installed:
+  mariadb-connector-c-3.1.13-1.amzn2023.0.3.x86_64                              
+  mariadb-connector-c-config-3.1.13-1.amzn2023.0.3.noarch                       
+  mariadb105-3:10.5.20-1.amzn2023.0.1.x86_64                                    
+  mariadb105-common-3:10.5.20-1.amzn2023.0.1.x86_64                             
+  perl-Sys-Hostname-1.23-477.amzn2023.0.5.x86_64                                
+
+Complete!
+[ec2-user@ip-10-1-10-121 ~]$ sudo yum install mariadb
+Last metadata expiration check: 0:12:35 ago on Fri Nov 17 14:05:25 2023.
+No match for argument: mariadb
+Error: Unable to find a match: mariadb
+[ec2-user@ip-10-1-10-121 ~]$ apt-get install mariadb-client
+-bash: apt-get: command not found
+[ec2-user@ip-10-1-10-121 ~]$ mysql --version
+mysql  Ver 15.1 Distrib 10.5.20-MariaDB, for Linux (x86_64) using  EditLine wrapper
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 31
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> Ctrl-C -- exit!
+Aborted
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 32
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> help
+
+General information about MariaDB can be found at
+http://mariadb.org
+
+List of all client commands:
+Note that all text commands must be first on line and end with ';'
+?         (\?) Synonym for `help'.
+clear     (\c) Clear the current input statement.
+connect   (\r) Reconnect to the server. Optional arguments are db and host.
+delimiter (\d) Set statement delimiter.
+edit      (\e) Edit command with $EDITOR.
+ego       (\G) Send command to MariaDB server, display result vertically.
+exit      (\q) Exit mysql. Same as quit.
+go        (\g) Send command to MariaDB server.
+help      (\h) Display this help.
+nopager   (\n) Disable pager, print to stdout.
+notee     (\t) Don't write into outfile.
+pager     (\P) Set PAGER [to_pager]. Print the query results via PAGER.
+print     (\p) Print current command.
+prompt    (\R) Change your mysql prompt.
+quit      (\q) Quit mysql.
+rehash    (\#) Rebuild completion hash.
+source    (\.) Execute an SQL script file. Takes a file name as an argument.
+status    (\s) Get status information from the server.
+system    (\!) Execute a system shell command.
+tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.
+use       (\u) Use another database. Takes database name as argument.
+charset   (\C) Switch to another charset. Might be needed for processing binlog with multi-byte charsets.
+warnings  (\W) Show warnings after every statement.
+nowarning (\w) Don't show warnings after every statement.
+
+For server side help, type 'help contents'
+
+MySQL [(none)]> CREATE TABLE footballer (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(50),
+    ->     age INT,
+    ->     club VARCHAR(50),
+    ->     position VARCHAR(50)
+    -> );
+ERROR 1046 (3D000): No database selected
+MySQL [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.006 sec)
+
+MySQL [(none)]> Ctrl-C -- exit!
+Aborted
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 34
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> USE mysql;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [mysql]> CREATE TABLE footballer (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(50),
+    ->     age INT,
+    ->     club VARCHAR(50),
+    ->     position VARCHAR(50)
+    -> );
+ERROR 1044 (42000): Access denied for user 'admin'@'%' to database 'mysql'
+MySQL [mysql]> CREATE TABLE footballer (     id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),     age INT,     club VARCHAR(50),     position VARCHAR(50) );
+ERROR 1044 (42000): Access denied for user 'admin'@'%' to database 'mysql'
+MySQL [mysql]> Ctrl-C -- exit!
+Aborted
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 35
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> USE mysql;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [mysql]> CREATE TABLE footballer (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(50),
+    ->     age INT,
+    ->     club VARCHAR(50),
+    ->     position VARCHAR(50)
+    -> );
+ERROR 1044 (42000): Access denied for user 'admin'@'%' to database 'mysql'
+MySQL [mysql]> Ctrl-C -- exit!
+Aborted
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 37
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> GRANT CREATE ON mysql.* TO 'admin'@'%';
+ERROR 1044 (42000): Access denied for user 'admin'@'%' to database 'mysql'
+MySQL [(none)]> Ctrl-C -- exit!
+Aborted
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123
+ERROR 1045 (28000): Access denied for user 'admin'@'10.1.10.121' (using password: YES)
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 39
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> \c
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.002 sec)
+
+MySQL [(none)]> GRANT CREATE ON mysql.* TO 'admin'@'%';
+ERROR 1044 (42000): Access denied for user 'admin'@'%' to database 'mysql'
+MySQL [(none)]> Ctrl-C -- exit!
+Aborted
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 40
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> Ctrl-C -- exit!
+Aborted
+[ec2-user@ip-10-1-10-121 ~]$ mysql -u udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u root -pTQ123at123t
+ERROR 1045 (28000): Access denied for user 'root'@'10.1.10.121' (using password: YES)
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 42
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> Ctrl-C -- exit!
+Aborted
+[ec2-user@ip-10-1-10-121 ~]$ mysql -u root -p
+Enter password: 
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 43
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> use mysql 
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [mysql]> show databases ; 
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.002 sec)
+
+MySQL [mysql]> CREATE TABLE footballer (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(50),
+    ->     age INT,
+    ->     club VARCHAR(50),
+    ->     position VARCHAR(50)
+    -> );
+ERROR 1044 (42000): Access denied for user 'admin'@'%' to database 'mysql'
+MySQL [mysql]> GRANT CREATE ON mysql.* TO 'admin'@'%';
+ERROR 1044 (42000): Access denied for user 'admin'@'%' to database 'mysql'
+MySQL [mysql]> Ctrl-C -- exit!
+Aborted
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u root -pTQ123at123t
+ERROR 1045 (28000): Access denied for user 'root'@'10.1.10.121' (using password: YES)
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'10.1.10.121' (using password: YES)
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'10.1.10.121' (using password: YES)
+[ec2-user@ip-10-1-10-121 ~]$ mysqladmin -u root password 'TQ123at123t'
+mysqladmin: connect to server at 'localhost' failed
+error: 'Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)'
+Check that mysqld is running and that the socket: '/var/lib/mysql/mysql.sock' exists!
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u root -pTQ123at123t
+ERROR 1045 (28000): Access denied for user 'root'@'10.1.10.121' (using password: YES)
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 49
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.006 sec)
+
+MySQL [(none)]> use mysql
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [mysql]> CREATE DATABASE udacity;
+Query OK, 1 row affected (0.023 sec)
+
+MySQL [mysql]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+5 rows in set (0.002 sec)
+
+MySQL [mysql]> use udacity 
+Database changed
+MySQL [udacity]> CREATE TABLE footballer (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(50),
+    ->     age INT,
+    ->     club VARCHAR(50),
+    ->     position VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.098 sec)
+
+MySQL [udacity]> SHOW TABLES;
++-------------------+
+| Tables_in_udacity |
++-------------------+
+| footballer        |
++-------------------+
+1 row in set (0.003 sec)
+
+MySQL [udacity]> INSERT INTO footballer (name, age, club, position) VALUES
+    -> ('Messi', 34, 'Paris Saint-Germain', 'Forward'),
+    -> ('Ronaldo', 37, 'Manchester United', 'Forward'),
+    -> ('Haaland', 21, 'Borussia Dortmund', 'Forward');
+Query OK, 3 rows affected (0.017 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MySQL [udacity]> select * from footballer; 
++----+---------+------+---------------------+----------+
+| id | name    | age  | club                | position |
++----+---------+------+---------------------+----------+
+|  1 | Messi   |   34 | Paris Saint-Germain | Forward  |
+|  2 | Ronaldo |   37 | Manchester United   | Forward  |
+|  3 | Haaland |   21 | Borussia Dortmund   | Forward  |
++----+---------+------+---------------------+----------+
+3 rows in set (0.002 sec)
+
+MySQL [udacity]> INSERT INTO footballer (name, age, club, position) VALUES
+    -> ('Messi', 34, 'Paris Saint-Germain', 'Forward'),
+    -> ('Ronaldo', 37, 'Manchester United', 'Forward'),
+    -> ('Haaland', 21, 'Borussia Dortmund', 'Forward'),
+    -> ('Van Dijk', 30, 'Liverpool', 'Defender'),
+    -> ('Laporte', 27, 'Manchester City', 'Defender'),
+    -> ('Koulibaly', 30, 'Napoli', 'Defender'),
+    -> ('Neuer', 35, 'Bayern Munich', 'Goalkeeper'),
+    -> ('Oblak', 29, 'Atletico Madrid', 'Goalkeeper'),
+    -> ('Donnarumma', 22, 'Paris Saint-Germain', 'Goalkeeper');
+Query OK, 9 rows affected (0.013 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+MySQL [udacity]> select * from footballer; 
++----+------------+------+---------------------+------------+
+| id | name       | age  | club                | position   |
++----+------------+------+---------------------+------------+
+|  1 | Messi      |   34 | Paris Saint-Germain | Forward    |
+|  2 | Ronaldo    |   37 | Manchester United   | Forward    |
+|  3 | Haaland    |   21 | Borussia Dortmund   | Forward    |
+|  4 | Messi      |   34 | Paris Saint-Germain | Forward    |
+|  5 | Ronaldo    |   37 | Manchester United   | Forward    |
+|  6 | Haaland    |   21 | Borussia Dortmund   | Forward    |
+|  7 | Van Dijk   |   30 | Liverpool           | Defender   |
+|  8 | Laporte    |   27 | Manchester City     | Defender   |
+|  9 | Koulibaly  |   30 | Napoli              | Defender   |
+| 10 | Neuer      |   35 | Bayern Munich       | Goalkeeper |
+| 11 | Oblak      |   29 | Atletico Madrid     | Goalkeeper |
+| 12 | Donnarumma |   22 | Paris Saint-Germain | Goalkeeper |
++----+------------+------+---------------------+------------+
+12 rows in set (0.001 sec)
+
+MySQL [udacity]> DELETE FROM footballer WHERE id IN (SELECT id FROM footballer ORDER BY id LIMIT 3);
+ERROR 1235 (42000): This version of MySQL doesn't yet support 'LIMIT & IN/ALL/ANY/SOME subquery'
+MySQL [udacity]> DELETE FROM footballer WHERE id IN (SELECT id FROM footballer ORDER BY id LIMIT 3);
+ERROR 1235 (42000): This version of MySQL doesn't yet support 'LIMIT & IN/ALL/ANY/SOME subquery'
+MySQL [udacity]> Ctrl-C -- exit!
+Aborted
+[ec2-user@ip-10-1-10-121 ~]$ mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 52
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> use udacity 
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [udacity]> DELETE FROM footballer ORDER BY id LIMIT 3;
+Query OK, 3 rows affected (0.023 sec)
+
+MySQL [udacity]> select * from footballer;
++----+------------+------+---------------------+------------+
+| id | name       | age  | club                | position   |
++----+------------+------+---------------------+------------+
+|  4 | Messi      |   34 | Paris Saint-Germain | Forward    |
+|  5 | Ronaldo    |   37 | Manchester United   | Forward    |
+|  6 | Haaland    |   21 | Borussia Dortmund   | Forward    |
+|  7 | Van Dijk   |   30 | Liverpool           | Defender   |
+|  8 | Laporte    |   27 | Manchester City     | Defender   |
+|  9 | Koulibaly  |   30 | Napoli              | Defender   |
+| 10 | Neuer      |   35 | Bayern Munich       | Goalkeeper |
+| 11 | Oblak      |   29 | Atletico Madrid     | Goalkeeper |
+| 12 | Donnarumma |   22 | Paris Saint-Germain | Goalkeeper |
++----+------------+------+---------------------+------------+
+9 rows in set (0.002 sec)
+
+MySQL [udacity]> 

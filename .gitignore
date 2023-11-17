@@ -1,0 +1,4 @@
+connect to the RDS fron the EC2-public: 
+
+# sudo dnf install mariadb105
+# mysql -h udacity.c6t0uhy5m11m.us-east-1.rds.amazonaws.com -P 3306 -u admin -pTQ123at123t
