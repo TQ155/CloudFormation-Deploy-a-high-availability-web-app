@@ -4,42 +4,42 @@ Parameters:
   VpcName:
     Description: A name that is prefixed to resource names
     Type: String
-    Default: "Resources US-EAST-1"
+    Default: "Resources US-WEST-2"
 
   VpcCIDR:
     Description: Please enter the IP range (CIDR notation) for this VPC
     Type: String
-    Default: 10.1.0.0/16
+    Default: 10.2.0.0/16
 
   PublicSubnet1CIDR:
     Description: Please enter the IP range (CIDR notation) for the public subnet in the first Availability Zone
     Type: String
-    Default: 10.1.10.0/24
+    Default: 10.2.10.0/24
 
   PublicSubnet2CIDR:
     Description: Please enter the IP range (CIDR notation) for the public subnet in the second Availability Zone
     Type: String
-    Default: 10.1.11.0/24
+    Default: 10.2.11.0/24
 
   PublicSubnet3CIDR:
     Description: Please enter the IP range (CIDR notation) for the public subnet in the third Availability Zone
     Type: String
-    Default: 10.1.12.0/24
+    Default: 10.2.12.0/24
 
   PrivateSubnet1CIDR:
     Description: Please enter the IP range (CIDR notation) for the private subnet in the first Availability Zone
     Type: String
-    Default: 10.1.20.0/24
+    Default: 10.2.20.0/24
 
   PrivateSubnet2CIDR:
     Description: Please enter the IP range (CIDR notation) for the private subnet in the second Availability Zone
     Type: String
-    Default: 10.1.21.0/24
+    Default: 10.2.21.0/24
 
   PrivateSubnet3CIDR:
     Description: Please enter the IP range (CIDR notation) for the private subnet in the third Availability Zone
     Type: String
-    Default: 10.1.22.0/24
+    Default: 10.2.22.0/24
 
 Metadata:
   AWS::CloudFormation::Interface:
@@ -229,11 +229,11 @@ Resources:
       GroupDescription: Udacity ARR Project - Database Security Group
       GroupName: UDARR-Database
       SecurityGroupIngress:
-        -   Description: Application EC2 instances
-            FromPort: 3306
-            IpProtocol: tcp
-            SourceSecurityGroupId: !Ref ApplicationSecurityGroup
-            ToPort: 3306
+        - Description: Application EC2 instances
+          FromPort: 3306
+          IpProtocol: tcp
+          SourceSecurityGroupId: !Ref ApplicationSecurityGroup
+          ToPort: 3306
       VpcId: !Ref VPC
       Tags:
         - Key: Name
@@ -245,11 +245,11 @@ Resources:
       GroupDescription: Udacity ARR Project - Application Security Group
       GroupName: UDARR-Application
       SecurityGroupIngress:
-        -   Description: SSH from the Internet
-            FromPort: 22
-            IpProtocol: tcp
-            CidrIp: 0.0.0.0/0
-            ToPort: 22
+        - Description: SSH from the Internet
+          FromPort: 22
+          IpProtocol: tcp
+          CidrIp: 0.0.0.0/0
+          ToPort: 22
       VpcId: !Ref VPC
       Tags:
         - Key: Name
@@ -262,8 +262,16 @@ Outputs:
 
   PublicSubnets:
     Description: A list of the public subnets
-    Value: !Join [ ", ", [ !Ref PublicSubnet1, !Ref PublicSubnet2, !Ref PublicSubnet3 ]]
+    Value: !Join [", ", [!Ref PublicSubnet1, !Ref PublicSubnet2, !Ref PublicSubnet3]]
 
   PrivateSubnets:
     Description: A list of the private subnets
-    Value: !Join [ ", ", [ !Ref PrivateSubnet1, !Ref PrivateSubnet2, !Ref PrivateSubnet3 ]]
+    Value: !Join [", ", [!Ref PrivateSubnet1, !Ref PrivateSubnet2, !Ref PrivateSubnet3]]
+
+  DatabaseSecurityGroup:
+    Description: ID of the database security group
+    Value: !Ref DatabaseSecurityGroup
+
+  ApplicationSecurityGroup:
+    Description: ID of the EC2 instance security group
+    Value: !Ref ApplicationSecurityGroup
