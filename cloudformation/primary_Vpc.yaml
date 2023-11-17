@@ -1,5 +1,6 @@
-Description:  Udacity - Design for Availability, Resilience, and Reliability
-
+Description: Udacity - Design for Availability, Resilience, and Reliability
+# please check the screenshots under / cloudformation to know why i went for 3AZs
+# The VPC subnets must be in 3 Availability Zones (AZs) for the Multi-AZ DB cluster. The current subnets are in 2 AZs (us-east-1a, us-east-1b). Add a subnet in a different AZ than the current subnets.
 Parameters:
   VpcName:
     Description: A name that is prefixed to resource names
@@ -21,6 +22,11 @@ Parameters:
     Type: String
     Default: 10.1.11.0/24
 
+  PublicSubnet3CIDR:
+    Description: Please enter the IP range (CIDR notation) for the public subnet in the third Availability Zone
+    Type: String
+    Default: 10.1.12.0/24
+
   PrivateSubnet1CIDR:
     Description: Please enter the IP range (CIDR notation) for the private subnet in the first Availability Zone
     Type: String
@@ -30,6 +36,11 @@ Parameters:
     Description: Please enter the IP range (CIDR notation) for the private subnet in the second Availability Zone
     Type: String
     Default: 10.1.21.0/24
+
+  PrivateSubnet3CIDR:
+    Description: Please enter the IP range (CIDR notation) for the private subnet in the third Availability Zone
+    Type: String
+    Default: 10.1.22.0/24
 
 Metadata:
   AWS::CloudFormation::Interface:
@@ -46,8 +57,10 @@ Metadata:
         Parameters:
           - PublicSubnet1CIDR
           - PublicSubnet2CIDR
+          - PublicSubnet3CIDR
           - PrivateSubnet1CIDR
           - PrivateSubnet2CIDR
+          - PrivateSubnet3CIDR
 
     ParameterLabels:
       VpcName:
@@ -58,10 +71,14 @@ Metadata:
         default: "Public Subnet 1"
       PublicSubnet2CIDR:
         default: "Public Subnet 2"
+      PublicSubnet3CIDR:
+        default: "Public Subnet 3"
       PrivateSubnet1CIDR:
         default: "Private Subnet 1"
       PrivateSubnet2CIDR:
         default: "Private Subnet 2"
+      PrivateSubnet3CIDR:
+        default: "Private Subnet 3"
 
 Resources:
   VPC:
@@ -99,6 +116,7 @@ Resources:
           Value: !Sub
             - ${VpcName} Public Subnet (${AZ1})
             - { AZ1: !Select [ 0, !GetAZs  '' ] }
+
   PublicSubnet2:
     Type: AWS::EC2::Subnet
     Properties:
@@ -111,6 +129,20 @@ Resources:
           Value: !Sub
             - ${VpcName} Public Subnet (${AZ2})
             - { AZ2: !Select [ 1, !GetAZs  '' ] }
+
+  PublicSubnet3:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [ 2, !GetAZs  '' ]
+      CidrBlock: !Ref PublicSubnet3CIDR
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Sub
+            - ${VpcName} Public Subnet (${AZ3})
+            - { AZ3: !Select [ 2, !GetAZs  '' ] }
+
   PrivateSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
@@ -123,6 +155,7 @@ Resources:
           Value: !Sub
             - ${VpcName} Private Subnet (${AZ1})
             - { AZ1: !Select [ 0, !GetAZs  '' ] }
+
   PrivateSubnet2:
     Type: AWS::EC2::Subnet
     Properties:
@@ -135,6 +168,19 @@ Resources:
           Value: !Sub
             - ${VpcName} Private Subnet (${AZ2})
             - { AZ2: !Select [ 1, !GetAZs  '' ] }
+
+  PrivateSubnet3:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [ 2, !GetAZs  '' ]
+      CidrBlock: !Ref PrivateSubnet3CIDR
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: !Sub
+            - ${VpcName} Private Subnet (${AZ3})
+            - { AZ3: !Select [ 2, !GetAZs  '' ] }
 
   PublicRouteTable:
     Type: AWS::EC2::RouteTable
@@ -163,6 +209,12 @@ Resources:
     Properties:
       RouteTableId: !Ref PublicRouteTable
       SubnetId: !Ref PublicSubnet2
+
+  PublicSubnet3RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      SubnetId: !Ref PublicSubnet3
 
   PrivateRouteTable:
     Type: AWS::EC2::RouteTable
@@ -211,16 +263,8 @@ Outputs:
 
   PublicSubnets:
     Description: A list of the public subnets
-    Value: !Join [ ", ", [ !Ref PublicSubnet1, !Ref PublicSubnet2 ]]
+    Value: !Join [ ", ", [ !Ref PublicSubnet1, !Ref PublicSubnet2, !Ref PublicSubnet3 ]]
 
   PrivateSubnets:
     Description: A list of the private subnets
-    Value: !Join [ ", ", [ !Ref PrivateSubnet1, !Ref PrivateSubnet2 ]]
-
-  DatabaseSecurityGroup:
-    Description: ID of the database security group
-    Value: !Ref DatabaseSecurityGroup
-
-  ApplicationSecurityGroup:
-    Description: ID of the EC2 instance security group
-    Value: !Ref ApplicationSecurityGroup
+    Value: !Join [ ", ", [ !Ref PrivateSubnet1, !Ref PrivateSubnet2, !Ref PrivateSubnet3 ]]
